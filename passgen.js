@@ -14,7 +14,7 @@ function password(length, num = false, strength = 'weak'){
 				pwd += digits.charAt(Math.floor(Math.random() * digits.length))
 			}
 			for(let j = 0; j <= length; j++){
-				pwd += lower.charAt(Math.floor(Math.random() * lower.lenght))
+				pwd += lower.charAt(Math.floor(Math.random() * lower.length))
 			}
 		}
 	 }// else if(strength == 'strong'){
@@ -22,7 +22,7 @@ function password(length, num = false, strength = 'weak'){
 	// 		length -=2
 	// 		for(let k
 	// }
-
+return pwd
 }
 
 console.log(password(5, num = true, strength = 'weak'))
