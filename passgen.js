@@ -28,21 +28,25 @@ function password(length, num = false, strength = "weak") {
         pwd += letters.charAt(Math.floor(Math.random() * letters.length));
       }
     }
-
-    pwd = pwd.split("")
-	const shuffleArray = array => {
-		for(let i = array.length; i > 0; i--){
-			const j = Math.floor(Math.random() * (i + 1))
-			const temp = array[i]
-			array[i] = array[j];
-			array[j] = temp
-		}
-		return array
-	}
-	shuffleArray(pwd)
-	pwd = pwd.join("")
-    return pwd;
   }
+
+  pwd = pwd.split("");
+
+  const shuffleArray = (array) => {
+	for (let i = array.length; i > 0; i--) {
+	  const j = Math.floor(Math.random() * (i + 1));
+	  const temp = array[i];
+	  array[i] = array[j];
+	  array[j] = temp;
+	}
+	return array;
+  };
+
+  shuffleArray(pwd);
+  pwd = pwd.join("");
+
+  return pwd;
+
 }
 
 console.log(password(8, (num = true), (strength = "strong")));
