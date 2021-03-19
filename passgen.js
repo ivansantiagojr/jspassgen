@@ -23,11 +23,13 @@ function password(length, num = false, strength = "weak") {
 
     case "very":
       var ran = Math.floor(Math.random() * 4);
-      if (ran < 2) {
-        ran = 2;
-      } else if (ran > 4) {
-        ran = 4;
-      }
+      {ran < 2 && (ran = 2)}
+      {ran > 4 && (ran = 4)}
+      // if (ran < 2) {
+      //   ran = 2;
+      // } else if (ran > 4) {
+      //   ran = 4;
+      // }
 
       if (num) {
         length -= ran;
