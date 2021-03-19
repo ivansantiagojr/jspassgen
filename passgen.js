@@ -10,26 +10,23 @@ function password(length, num = false, strength = "weak") {
     case "weak":
       if (num) {
         length -= 2;
-
         for (let i = 0; i <= 2; i++) {
           pwd += digits.charAt(Math.floor(Math.random() * digits.length));
         }
       }
+
       length -= 2;
       for (let j = 0; j <= length; j++) {
         pwd += lower.charAt(Math.floor(Math.random() * lower.length));
       }
-      break
+
+      break;
 
     case "very":
       var ran = Math.floor(Math.random() * 4);
+      
       {ran < 2 && (ran = 2)}
-      {ran > 4 && (ran = 4)}
-      // if (ran < 2) {
-      //   ran = 2;
-      // } else if (ran > 4) {
-      //   ran = 4;
-      // }
+      {ran > 4 && (ran = 4);}
 
       if (num) {
         length -= ran;
@@ -37,35 +34,39 @@ function password(length, num = false, strength = "weak") {
           pwd += digits.charAt(Math.floor(Math.random() * digits.length));
         }
       }
+
       length -= ran;
       for (let j = 0; j < length; j++) {
         pwd += letters.charAt(Math.floor(Math.random() * letters.length));
       }
-      for (let k = 0; k < ran; k++) {
-        pwd += specialChars.charAt(Math.floor(Math.random() * specialChars.length));
-      }
-      break
 
-      default:
-        if (num) {
-          length -= 2;
-          for (let k = 0; k <= 2; k++) {
-            pwd += digits.charAt(Math.floor(Math.random() * digits.length));
-          }
-        }
+      for (let k = 0; k < ran; k++) {
+        pwd += specialChars.charAt(
+          Math.floor(Math.random() * specialChars.length)
+        );
+      }
+      break;
+
+    default:
+      if (num) {
         length -= 2;
-        for (let j = 0; j <= length; j++) {
-          pwd += letters.charAt(Math.floor(Math.random() * letters.length));
+        for (let k = 0; k <= 2; k++) {
+          pwd += digits.charAt(Math.floor(Math.random() * digits.length));
         }
-        break
+      }
+
+      length -= 2;
+      for (let j = 0; j <= length; j++) {
+        pwd += letters.charAt(Math.floor(Math.random() * letters.length));
+      }
+      break;
   }
 
-pwd = pwd.split("");
+  pwd = pwd.split("");
+  shuffleArray(pwd);
+  pwd = pwd.join("");
 
-shuffleArray(pwd);
-pwd = pwd.join("");
-
-return pwd;
+  return pwd;
 }
 
 const shuffleArray = (array) => {
@@ -75,9 +76,9 @@ const shuffleArray = (array) => {
     array[i] = array[j];
     array[j] = temp;
   }
+  
   return array;
 };
-
 
 console.log(password(8, true, "weak"));
 console.log(password(8, true, "strong"));
