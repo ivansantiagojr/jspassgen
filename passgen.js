@@ -1,4 +1,4 @@
-function password(length, num = false, strength = "weak") {
+function password(length = 8, num = true, strength = "strong") {
   const lower = "abcdefghijklnmopqrstuvwxyz";
   const upper = lower.toUpperCase();
   const letters = lower + upper;
